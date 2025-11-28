@@ -5,10 +5,12 @@ use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\ProdukController;
+use App\Http\Controllers\Admin\UlasanController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderanUserController;
@@ -45,7 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/users', [AdminUserController::class, 'store'])->name('admin.users.store');
         Route::put('/admin/users/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
         Route::delete('/admin/users/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
-
+        Route::get('/ulasan',[UlasanController::class, 'index'])->name('admin.rating.index');
     });
 
     // khusus user
@@ -60,7 +62,33 @@ Route::middleware('auth')->group(function () {
          Route::get('/produk/show{id}',[ProdukController::class, 'show'])->name('user.produk.show');
        Route::put('/orders/cancel/{id}', [OrderController::class, 'cancel'])
     ->name('orders.cancel');
+   Route::get('/orders/{order}/review', [OrderController::class, 'reviewCreate'])->name('user.reviews.create');
+    Route::post('/orders/{order}/review', [OrderController::class, 'reviewStore'])->name('reviews.store');
+// Letakkan di routes/web.php
 
+Route::get('/product/{id}/reviews', function($id) {
+    $product = \App\Models\Product::findOrFail($id);
+
+    // Load ratings + user
+    $ratings = $product->ratings()->with('user')->get();
+
+    $reviews = $ratings->map(function($rating) {
+        return [
+            'user' => $rating->user->name ?? 'User',
+            'rating' => (int) $rating->rating, // dipastikan integer
+            'comment' => $rating->comment ?? '',
+            'date' => $rating->created_at->format('d M Y')
+        ];
+    });
+
+    return response()->json($reviews);
+    
+});
+
+Route::get('/reviews/{id}', [OrderController::class, 'getReviews'])->name('reviews.get');
+Route::put('/orders/{id}/confirm', [OrderController::class, 'confirm'])->name('orders.confirm');
+Route::get('/user/orders/{order}/proof', [OrderController::class, 'getProof'])
+    ->name('user.orders.proof');
     });
 
     // profile routes

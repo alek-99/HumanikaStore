@@ -79,6 +79,16 @@
               <i class="bi bi-bag-check"></i> <span>Orderan</span>
             </a>
           </li>
+
+          {{-- ulasan --}}
+          <li>
+            <a href="{{ route('admin.rating.index') }}"
+              class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-700 transition">
+              <i class="bi bi-chat-left-quote"></i> <span>Ulasan Customer</span>
+            </a>
+          </li>
+
+
           {{-- Kelola Admin --}}
            <li>
             <a href="{{ route('admin.users.index') }}"

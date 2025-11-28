@@ -671,7 +671,8 @@
                         Pembayaran E-Wallet
                     </div>
                     <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.5rem;">Transfer ke nomor:</p>
-                    <div class="ewallet-number">0812-3456-7890</div>
+                    <div class="ewallet-number"> Dana : 0813-8909-0873</div>
+                    <div class="ewallet-number">Seabank : 9012 6525 2062</div>
                     <div class="qr-container">
                         <p class="qr-label">Atau scan QR Code</p>
                         <img src="" 

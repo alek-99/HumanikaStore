@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+     protected $casts = [
+       'rating' => 'integer'
+   ];
     protected $fillable = [
         'name',
         'deskripsi',
@@ -23,4 +26,15 @@ class Product extends Model
     {
         return $this->hasMany(Order::class);
     }
+    public function ratings()
+{
+    return $this->hasMany(Rating::class);
 }
+
+public function averageRating()
+{
+    return $this->ratings()->avg('rating');
+}
+
+}
+

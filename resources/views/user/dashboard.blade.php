@@ -81,7 +81,7 @@
                         <i class="bi bi-grid-3x3-gap-fill text-primary me-2"></i> 
                         <span>Menu Cepat</span>
                     </h5>
-                    
+                    {{-- link produk --}}
                     <div class="row g-3">
                         <div class="col-6">
                             <a href="{{ route('user.produk.index') }}" class="quick-menu-link text-decoration-none d-block">
@@ -93,6 +93,7 @@
                                 </div>
                             </a>
                         </div>
+                        {{-- link my orderan --}}
                         <div class="col-6">
                             <a href="{{ route('user.orders.index') }}" class="quick-menu-link text-decoration-none d-block">
                                 <div class="quick-menu-card p-3 rounded-3 text-center h-100">

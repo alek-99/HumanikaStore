@@ -1,6 +1,32 @@
 @extends('layouts.admin')
 
 @section('title', 'Dashboard Admin')
+<style>
+/* PERKECIL CARD STATISTIK */
+.stat-card .card-body {
+    padding: 1.2rem !important;   /* dari p-4 menjadi lebih kecil */
+}
+
+.stat-card .icon-box {
+    padding: 0.8rem !important;   /* kecilkan icon container */
+}
+
+.stat-card i {
+    font-size: 1.5rem !important; /* icon lebih kecil */
+}
+
+.stat-card h2 {
+    font-size: 1.8rem !important; /* angka besar lebih kecil */
+}
+
+.stat-card h6 {
+    font-size: 0.65rem !important; /* label kecil */
+}
+
+.stat-card small {
+    font-size: 0.7rem !important;
+}
+</style>
 
 @section('content')
 <div class="container-fluid px-4 py-5">
@@ -28,7 +54,8 @@
     <div class="row g-4 mb-5">
         <!-- Total Produk -->
         <div class="col-xl-4 col-lg-6">
-            <div class="card border-0 shadow-sm h-100 hover-card">
+           <div class="card border-0 shadow-sm h-100 hover-card stat-card">
+
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="icon-box bg-primary bg-opacity-10 rounded-3 p-3">
@@ -47,7 +74,8 @@
 
         <!-- Total Order -->
         <div class="col-xl-4 col-lg-6">
-            <div class="card border-0 shadow-sm h-100 hover-card">
+            <div class="card border-0 shadow-sm h-100 hover-card stat-card">
+
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="icon-box bg-info bg-opacity-10 rounded-3 p-3">
@@ -66,7 +94,8 @@
 
         <!-- Order Selesai -->
         <div class="col-xl-4 col-lg-6">
-            <div class="card border-0 shadow-sm h-100 hover-card">
+            <div class="card border-0 shadow-sm h-100 hover-card stat-card">
+
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="icon-box bg-success bg-opacity-10 rounded-3 p-3">
@@ -85,7 +114,8 @@
 
         <!-- Order Proses -->
         <div class="col-xl-4 col-lg-6">
-            <div class="card border-0 shadow-sm h-100 hover-card">
+           <div class="card border-0 shadow-sm h-100 hover-card stat-card">
+
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="icon-box bg-warning bg-opacity-10 rounded-3 p-3">
@@ -104,7 +134,8 @@
 
         <!-- Total Admin -->
         <div class="col-xl-4 col-lg-6">
-            <div class="card border-0 shadow-sm h-100 hover-card">
+           <div class="card border-0 shadow-sm h-100 hover-card stat-card">
+
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="icon-box bg-dark bg-opacity-10 rounded-3 p-3">
